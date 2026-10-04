@@ -1,0 +1,287 @@
+<?xml version="1.0" ?>
+<PlantModel xmlns="http://dexpi.org/schema/1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="1.3" xsi:schemaLocation="http://dexpi.org/schema/1.3 http://dexpi.org/schema/1.3/DEXPI.xsd">
+  <MetaData>
+    <PlantInformation Tag="BatchReactor-Plant" Name="Batch Reactor - Acetic Acid and Sodium Bicarbonate" CreationDate="2026-08-25T23:04:36.745670" CreatedBy="DWSIM Python Automation Bridge" SchemaVersion="DEXPI 1.3" Description="Full flowsheet: Feed preparation (2 pumps + 2 valves), mixing, conversion reactor, heat exchanger (E-401), gas-liquid separator (V-501), TANK-1, Gas Collection Tank, Product Collection Tank, cooling loop (PUMP-3 + VALVE-3)"/>
+  </MetaData>
+  <Equipment ID="Equipment-PUMP-1" Tag="PUMP-1" TagName="PUMP-1" ComponentClass="Pump" ComponentName="PUMP-1" ComponentType="Pump" Description="Acetic Acid Feed Pump">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Pump"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+      <GenericAttribute Name="EnergyStream" Value="E2"/>
+      <GenericAttribute Name="NominalPressure_bar" Value="1.01325"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-1" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-2" Tag="Outlet" TagName="Outlet" Function="Process"/>
+    <Nozzle ID="Nozzle-3" Tag="Energy-Port" TagName="Energy-Port" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-VALVE-2" Tag="VALVE-2" TagName="VALVE-2" ComponentClass="Valve" ComponentName="VALVE-2" ComponentType="Valve" Description="Acetic Acid Feed Control Valve (stream 18 -&amp;gt; 19)">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Valve"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-4" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-5" Tag="Outlet" TagName="Outlet" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-PUMP-2" Tag="PUMP-2" TagName="PUMP-2" ComponentClass="Pump" ComponentName="PUMP-2" ComponentType="Pump" Description="Sodium Bicarbonate Feed Pump">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Pump"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+      <GenericAttribute Name="EnergyStream" Value="E3"/>
+      <GenericAttribute Name="NominalPressure_bar" Value="1.01325"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-6" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-7" Tag="Outlet" TagName="Outlet" Function="Process"/>
+    <Nozzle ID="Nozzle-8" Tag="Energy-Port" TagName="Energy-Port" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-VALVE-1" Tag="VALVE-1" TagName="VALVE-1" ComponentClass="Valve" ComponentName="VALVE-1" ComponentType="Valve" Description="Sodium Bicarbonate Feed Control Valve (stream 16 -&amp;gt; 17)">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Valve"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-9" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-10" Tag="Outlet" TagName="Outlet" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-MIX-1" Tag="MIX-1" TagName="MIX-1" ComponentClass="Header" ComponentName="MIX-1" ComponentType="Mixer" Description="Feed Mixer: combines acid stream 19 and bicarb stream 17">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Mixer"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-11" Tag="Inlet-Acid" TagName="Inlet-Acid" Function="Process"/>
+    <Nozzle ID="Nozzle-12" Tag="Inlet-Bicarb" TagName="Inlet-Bicarb" Function="Process"/>
+    <Nozzle ID="Nozzle-13" Tag="Outlet" TagName="Outlet" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-Conversion-Reactor" Tag="Conversion reactor" TagName="Conversion reactor" ComponentClass="Reactor" ComponentName="Conversion reactor" ComponentType="RCT_Conversion" Description="Conversion Reactor: CH3COOH + NaHCO3 reaction">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="RCT_Conversion"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+      <GenericAttribute Name="EnergyStream" Value="E4"/>
+      <GenericAttribute Name="EnergyDuty_kW" Value="-0.02"/>
+      <GenericAttribute Name="ReactionType" Value="Conversion"/>
+      <GenericAttribute Name="Reagent-A" Value="Acetic Acid"/>
+      <GenericAttribute Name="Reagent-B" Value="Sodium Bicarbonate"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-14" Tag="Feed-Inlet" TagName="Feed-Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-15" Tag="Outlet-1-Gas" TagName="Outlet-1-Gas" Function="Process"/>
+    <Nozzle ID="Nozzle-16" Tag="Outlet-2-Liquid" TagName="Outlet-2-Liquid" Function="Process"/>
+    <Nozzle ID="Nozzle-17" Tag="Energy-Port" TagName="Energy-Port" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-E-401" Tag="E-401" TagName="E-401" ComponentClass="HeatExchanger" ComponentName="E-401" ComponentType="HeatExchanger" Description="Heat Exchanger E-401: cools Outlet 2 before separator">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="HeatExchanger"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-18" Tag="Hot-Inlet" TagName="Hot-Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-19" Tag="Hot-Outlet" TagName="Hot-Outlet" Function="Process"/>
+    <Nozzle ID="Nozzle-20" Tag="Cold-Inlet" TagName="Cold-Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-21" Tag="Cold-Outlet" TagName="Cold-Outlet" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-V-501" Tag="V-501" TagName="V-501" ComponentClass="Vessel" ComponentName="V-501" ComponentType="Separator" Description="V-501 Gas Liquid Separator: splits CO2 gas from liquid product">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Separator"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-22" Tag="Feed-Inlet" TagName="Feed-Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-23" Tag="Gas-Outlet" TagName="Gas-Outlet" Function="Process"/>
+    <Nozzle ID="Nozzle-24" Tag="Liquid-Outlet" TagName="Liquid-Outlet" Function="Process"/>
+    <Nozzle ID="Nozzle-25" Tag="Drain" TagName="Drain" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-TANK-1" Tag="TANK-1" TagName="TANK-1" ComponentClass="Vessel" ComponentName="TANK-1" ComponentType="Tank" Description="TANK-1: receives Outlet 1 overhead stream (stream 13)">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Tank"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-26" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-27" Tag="Outlet" TagName="Outlet" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-Gas-Collection-Tank" Tag="Gas Collection Tank" TagName="Gas Collection Tank" ComponentClass="Vessel" ComponentName="Gas Collection Tank" ComponentType="Tank" Description="Gas Collection Tank: collects CO2 gas from V-501 gas outlet">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Tank"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-28" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-29" Tag="Outlet" TagName="Outlet" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-Product-Collection-Tank" Tag="Product Collection Tank" TagName="Product Collection Tank" ComponentClass="Vessel" ComponentName="Product Collection Tank" ComponentType="Tank" Description="Product Collection Tank: collects liquid product from V-501">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Tank"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-30" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-31" Tag="Outlet" TagName="Outlet" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-PUMP-3" Tag="PUMP-3" TagName="PUMP-3" ComponentClass="Pump" ComponentName="PUMP-3" ComponentType="Pump" Description="Cooling Water Recirculation Pump">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Pump"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+      <GenericAttribute Name="EnergyStream" Value="E5"/>
+      <GenericAttribute Name="EnergyDuty_kW" Value="0.00"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-32" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-33" Tag="Outlet" TagName="Outlet" Function="Process"/>
+    <Nozzle ID="Nozzle-34" Tag="Energy-Port" TagName="Energy-Port" Function="Process"/>
+  </Equipment>
+  <Equipment ID="Equipment-VALVE-3" Tag="VALVE-3" TagName="VALVE-3" ComponentClass="Valve" ComponentName="VALVE-3" ComponentType="Valve" Description="Cooling Loop Control Valve (stream 21 -&amp;gt; 22)">
+    <GenericAttributes>
+      <GenericAttribute Name="DWSIMObjectType" Value="Valve"/>
+      <GenericAttribute Name="Source" Value="DWSIM Automation Export"/>
+    </GenericAttributes>
+    <Nozzle ID="Nozzle-35" Tag="Inlet" TagName="Inlet" Function="Process"/>
+    <Nozzle ID="Nozzle-36" Tag="Outlet" TagName="Outlet" Function="Process"/>
+  </Equipment>
+  <PipingNetworkSystem ID="PipingSystem-1" Tag="Main Process Lines" TagName="Main Process Lines">
+    <PipingNetworkSegment ID="Stream-Acetic-Acid-Feed" Tag="Acetic Acid Feed" TagName="Acetic Acid Feed" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="Raw acetic acid feed to PUMP-1">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-18" Tag="18" TagName="18" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="PUMP-1 outlet to VALVE-2">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-19" Tag="19" TagName="19" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="VALVE-2 outlet to MIX-1 (acid side)">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Sodium-Bicarbonate-Feed" Tag="Sodium bicarbonate Feed" TagName="Sodium bicarbonate Feed" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="Raw sodium bicarbonate feed to PUMP-2">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-16" Tag="16" TagName="16" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="PUMP-2 outlet to VALVE-1">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-17" Tag="17" TagName="17" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="VALVE-1 outlet to MIX-1 (bicarb side)">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Feed-Mixture" Tag="Feed Mixture" TagName="Feed Mixture" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="MIX-1 outlet to Conversion reactor">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Outlet-1" Tag="Outlet 1" TagName="Outlet 1" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="Reactor overhead outlet to TANK-1">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Outlet-2" Tag="Outlet 2" TagName="Outlet 2" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="Reactor liquid outlet to E-401">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-13" Tag="13" TagName="13" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="TANK-1 outlet stream">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Cooling-Water" Tag="Cooling Water" TagName="Cooling Water" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="Cooling water supply to E-401 (from PUMP-3 loop)">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-21" Tag="21" TagName="21" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="PUMP-3 outlet to VALVE-3">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-22" Tag="22" TagName="22" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="VALVE-3 outlet / cooling water return">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-8" Tag="8" TagName="8" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="V-501 separator feed from E-401">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-12" Tag="12" TagName="12" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="V-501 drain / bottom stream">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Gas-Outlet-Stream" Tag="Gas Outlet Stream" TagName="Gas Outlet Stream" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="V-501 gas phase outlet to Gas Collection Tank">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Liquid-Outlet-Stream" Tag="Liquid Outlet Stream" TagName="Liquid Outlet Stream" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="V-501 liquid phase outlet to Product Collection Tank">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Gas-Collection-Stream" Tag="Gas Collection Stream" TagName="Gas Collection Stream" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="Gas Collection Tank outlet">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-Product-Collection-Stream" Tag="Product Collection Stream" TagName="Product Collection Stream" ComponentClass="PipingNetworkSegment" LineType="MaterialStream" Description="Product Collection Tank outlet">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="MaterialStream"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-E2" Tag="E2" TagName="E2" ComponentClass="PipingNetworkSegment" LineType="EnergyStream" Description="PUMP-1 energy input (0.00 kW)">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="EnergyStream"/>
+        <GenericAttribute Name="EnergyDuty_kW" Value="0.00"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-E3" Tag="E3" TagName="E3" ComponentClass="PipingNetworkSegment" LineType="EnergyStream" Description="PUMP-2 energy input (0.00 kW)">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="EnergyStream"/>
+        <GenericAttribute Name="EnergyDuty_kW" Value="0.00"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-E4" Tag="E4" TagName="E4" ComponentClass="PipingNetworkSegment" LineType="EnergyStream" Description="Conversion reactor energy (-0.02 kW)">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="EnergyStream"/>
+        <GenericAttribute Name="EnergyDuty_kW" Value="-0.02"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+    <PipingNetworkSegment ID="Stream-E5" Tag="E5" TagName="E5" ComponentClass="PipingNetworkSegment" LineType="EnergyStream" Description="PUMP-3 energy input (0.00 kW)">
+      <GenericAttributes>
+        <GenericAttribute Name="StreamType" Value="EnergyStream"/>
+        <GenericAttribute Name="EnergyDuty_kW" Value="0.00"/>
+      </GenericAttributes>
+    </PipingNetworkSegment>
+  </PipingNetworkSystem>
+  <Connection ID="Conn-01" From="Acetic-Acid-Feed" To="PUMP-1"/>
+  <Connection ID="Conn-02" From="PUMP-1" To="18"/>
+  <Connection ID="Conn-03" From="18" To="VALVE-2"/>
+  <Connection ID="Conn-04" From="VALVE-2" To="19"/>
+  <Connection ID="Conn-05" From="19" To="MIX-1"/>
+  <Connection ID="Conn-E2" From="E2" To="PUMP-1"/>
+  <Connection ID="Conn-06" From="Sodium-Bicarbonate-Feed" To="PUMP-2"/>
+  <Connection ID="Conn-07" From="PUMP-2" To="16"/>
+  <Connection ID="Conn-08" From="16" To="VALVE-1"/>
+  <Connection ID="Conn-09" From="VALVE-1" To="17"/>
+  <Connection ID="Conn-10" From="17" To="MIX-1"/>
+  <Connection ID="Conn-E3" From="E3" To="PUMP-2"/>
+  <Connection ID="Conn-11" From="MIX-1" To="Feed-Mixture"/>
+  <Connection ID="Conn-12" From="Feed-Mixture" To="Conversion-Reactor"/>
+  <Connection ID="Conn-13" From="Conversion-Reactor" To="Outlet-1"/>
+  <Connection ID="Conn-14" From="Conversion-Reactor" To="Outlet-2"/>
+  <Connection ID="Conn-E4" From="Conversion-Reactor" To="E4"/>
+  <Connection ID="Conn-15" From="Outlet-1" To="TANK-1"/>
+  <Connection ID="Conn-16" From="TANK-1" To="13"/>
+  <Connection ID="Conn-17" From="Outlet-2" To="E-401"/>
+  <Connection ID="Conn-18" From="E-401" To="8"/>
+  <Connection ID="Conn-19" From="8" To="V-501"/>
+  <Connection ID="Conn-20" From="Cooling-Water" To="E-401"/>
+  <Connection ID="Conn-21" From="E-401" To="PUMP-3"/>
+  <Connection ID="Conn-22" From="PUMP-3" To="21"/>
+  <Connection ID="Conn-23" From="21" To="VALVE-3"/>
+  <Connection ID="Conn-24" From="VALVE-3" To="22"/>
+  <Connection ID="Conn-E5" From="E5" To="PUMP-3"/>
+  <Connection ID="Conn-25" From="V-501" To="Gas-Outlet-Stream"/>
+  <Connection ID="Conn-26" From="V-501" To="Liquid-Outlet-Stream"/>
+  <Connection ID="Conn-27" From="V-501" To="12"/>
+  <Connection ID="Conn-28" From="Gas-Outlet-Stream" To="Gas-Collection-Tank"/>
+  <Connection ID="Conn-29" From="Gas-Collection-Tank" To="Gas-Collection-Stream"/>
+  <Connection ID="Conn-30" From="Liquid-Outlet-Stream" To="Product-Collection-Tank"/>
+  <Connection ID="Conn-31" From="Product-Collection-Tank" To="Product-Collection-Stream"/>
+</PlantModel>

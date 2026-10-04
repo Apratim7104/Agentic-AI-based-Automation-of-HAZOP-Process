@@ -1,0 +1,158 @@
+{
+  "_comment": "Rebuilt from Back_Calculation_of_All_Parameters_in_Complete_DWSIM_Simulation.pdf (Apratim Chatterjee, HAZOP Back-Calculation Report, IEC 61882:2016). System: Laboratory Batch Reactor - Acetic Acid + Sodium Bicarbonate, PD-BR-001. Keys must match column names in scenario_results_summary*.csv (Tag.parameter). warn_margin_pct: how close to a hard limit counts as WARNING before CRITICAL (breach). Any key starting with '_' is ignored by scenario_risk_flagging.py.",
+  "Acetic Acid Feed.mass_flow_kgh": {
+    "min": 0.0605,
+    "min_warning": 0.3024,
+    "max_warning": 0.9072,
+    "max": 1.2096,
+    "hazardous": 1.8144,
+    "warn_margin_pct": 10,
+    "_nominal_kgh": 0.6048,
+    "_reverse_is_critical": true,
+    "_source": "Table 2 (p.4): Min Feasible 0.0605 kg/h (10% nominal), Normal Min 0.3024 (50%), Nominal 0.6048, Warning High 0.9072 (150%), Critical High 1.2096 (200%), Hazardous ≥1.8144 (300%). Reverse flow (<0) = CRITICAL (check valve failure). Finding 2 (p.10): 150% reclassified from CRITICAL → WARNING for single-axis deviation. Table 12 (p.10): Recommended 0.30-0.91, Hard limit 0.06-1.21 kg/h."
+  },
+  "Sodium bicarbonate Feed.mass_flow_kgh": {
+    "min": 0.259,
+    "min_warning": 1.296,
+    "max_warning": 3.889,
+    "max": 5.185,
+    "hazardous": 7.778,
+    "warn_margin_pct": 10,
+    "_nominal_kgh": 2.593,
+    "_reverse_is_critical": true,
+    "_source": "Table 3 (p.5): Min Feasible 0.259 kg/h (10% nominal), Warning Low 1.296 (50%), Nominal 2.593, Warning High 3.889 (150%), Critical High 5.185 (200%), Hazardous >7.778 (300%). Reverse flow (<0) = CRITICAL (check valve failure). Finding 3 (p.10): ~80% (2.07 kg/h) confirmed OK. Table 12 (p.10): Recommended 1.30-3.89, Hard limit 0.26-5.19 kg/h."
+  },
+  "pump_a_bar": {
+    "min": 0.5,
+    "min_warning": 0.8,
+    "max_warning": 1.2,
+    "max": 1.5,
+    "hazardous": 1.65,
+    "burst_risk": 1.81,
+    "catastrophic": 2.0,
+    "warn_margin_pct": 10,
+    "_nominal_bar_abs": 1.01325,
+    "_source": "Table 5 (p.6): Pump Off/No Flow 0.0-0.3, Min Feasible 0.50, Nominal 1.01325, Warning >1.20, Critical >1.50, Hazardous >1.65, Burst Risk >1.81, Catastrophic >2.0, Surge spike 2.5 bar_abs. Finding 4 (p.10): >1.65 bar_abs most dangerous single-axis deviation. R2/R6 (p.11): Relief valve at 1.5; CRITICAL alarm at 1.2, shutdown at 1.5. Table 12 (p.10): Recommended 0.80-1.20, Hard limit 0.50-1.50 bar_abs."
+  },
+  "pump_b_bar": {
+    "min": 0.5,
+    "min_warning": 0.8,
+    "max_warning": 1.2,
+    "max": 1.5,
+    "hazardous": 1.65,
+    "burst_risk": 1.81,
+    "catastrophic": 2.0,
+    "warn_margin_pct": 10,
+    "_nominal_bar_abs": 1.01325,
+    "_source": "Table 5 (p.6): Identical limits to PUMP-1 (shared valve parameters). Table 11 (p.9): 1.2 bar_abs →CRITICAL, 1.65 → CRITICAL, 1.81 HAZARDOUS, 2.0 → HAZARDOUS, 2.5 (surge) → CATASTROPHIC. Table 12 (p.10): Recommended 0.80-1.20, Hard limit 0.50-1.50 bar_abs."
+  },
+  "Outlet 1.pressure_bar": {
+    "min": 0.5,
+    "max_warning": 1.2,
+    "max": 1.5,
+    "hazardous": 1.65,
+    "burst_risk": 1.81,
+    "warn_margin_pct": 10,
+    "_nominal_bar_abs": 1.01325,
+    "_source": "Table 5 (p.6) / Table 10 (p.8): Valve/pump outlet Warning >1.20, Critical >1.50, Hazardous >1.65, Burst Risk >1.81 bar_abs. Table 12 (p.10): Hard limit 0.50-1.50 bar_abs. Mapping note: Outlet 1 = reactor pressure boundary proxy (no separate internal reactor pressure tag in this steady-state flowsheet)."
+  },
+  "Outlet 2. pressure_bar": {
+    "min": 0.5,
+    "max_warning": 1.05,
+    "max": 1.11325,
+    "hazardous": 1.21,
+    "warn_margin_pct": 10,
+    "_nominal_bar_abs": 1.01325,
+    "_source": "Table 9 (p.8): Product tank (T-601) Pump A/B pressure critical 1.60, hazardous 1.95 bar_abs. Table 7 (p.7): Gas tank (V-501 downstream) max observed ≈0.21 bar_abs in any scenario. Finding 1 (p.10): Gas tank is NOT a pressure hazard - sub-atmospheric in all cases. Outlet 2 = downstream collection vessel (T-601), a fragile beaker - tighter limit than Outlet 1. CORRECTED from previous file that wrongly applied reactor limits to both outlets."
+  },
+  "Reactor.delta_P_bar": {
+    "min": 0.0,
+    "max_warning": 0.05,
+    "max": 0.1,
+    "hazardous": 0.2,
+    "warn_margin_pct": 10,
+    "_nominal_bar": 0.0,
+    "_source": "Table 8 (p.7): Reactor (Conversion Reactor / MIX-1) pressure drop: nominal O Pa, max safe 5,000 Pa (0.05 bar), hazardous >10,000 Pa (0.10 bar). Derivation: computed as Outlet 1.pressure_bar - Outlet 2. pressure_bar. Key check for COMPOUNDING risk: both outlets can be individually within limits while their difference still breaches the delta-P limit."
+  },
+  "gas_tank_pressure_bar_abs": {
+    "min": 0.0,
+    "max_warning": 0.104,
+    "max": 0.139,
+    "hazardous": 0.208,
+    "hard_limit": 0.21,
+    "warn_margin_pct": 10,
+    "_nominal_bar_abs": 0.069,
+    "_source": "Table 7 (p.7): Gas tank (V-501) pressure vs acid feed rate: Nominal (0.6048 kg/h) 0.069 bar_abs, Elevated 150% 0.104 (WARNING), High 200% 0.139 (CRITICAL), Very High 300% 0.208 (HAZARDOUS). Table 12 (p.10): Recommended 0.01-0.10, Hard limit <0.21 bar_abs. Finding 1 (p.10): Gas tank NOT a pressure hazard in isolation - sub-atmospheric in all scenarios. Primary hazards: CO2 accumulation (asphyxiation) and pH extremes (corrosive acid excess)."
+  },
+  "product_tank_fill_kg_per_min": {
+    "min": 0.01,
+    "max_warning": 0.075,
+    "max": 0.096,
+    "hazardous": 0.14,
+    "warn_margin_pct": 10,
+    "_nominal_kg_per_min": 0.053,
+    "_tank_volume_L": 1.0,
+    "_overflow_alarm_fill_fraction": 0.8,
+    "_overflow_shutoff_fill_fraction": 0.9,
+    "_source": "Table 9 (p.8): Product tank fill rate: Min 0.010, Nominal 0.053, Warning 0.075, Critical 0.096, Hazardous ≥0.140 kg/min. Overflow times: Nominal ≈18.9 min, Warning ≈13.3 min, Critical ≥10.4 min, Hazardous 27.1 min. Table 12 (p.10): Recommended <0.075, Hard limit <0.096 kg/min. Finding 5 (p.10): Tank overflow is the primary process hazard at elevated bicarb flows. R1 (p.11): High-level alarm at 80% fill (≈0.8 L), automatic shutoff at 90% fill."
+  },
+  "Feed Mixture.temperature_C": {
+    "min": 19.85,
+    "max_warning": 39.85,
+    "max": 39.85,
+    "hazardous": 49.85,
+    "warn_margin_pct": 10,
+    "_nominal_C": 25.0,
+    "_min_K": 293,
+    "_nominal_K": 298.15,
+    "_max_safe_K": 313,
+    "_hazardous_K": 323,
+    "_source": "Table 8 (p.7): Reactor temperature: Min 293 K (19.85°C), Nominal 298.15 K (25°C), Max Safe 313 K (39.85°C), Hazardous >323 K (49.85°C). Table 12 (p.10): Recommended 295-308 K, Hard limit 293-313 Κ. Table 1 (p.3): System nearly isothermal at 298.15 K; cooling water adequate at nominal flow."
+  },
+  "E4.duty_kW": {
+    "min": 0.0,
+    "max_warning": 0.05,
+    "max": 0.1,
+    "warn_margin_pct": 10,
+    "_nominal_kW": 0.0169,
+    "_source": "Table 8 (p.7): Reactor heat load: Nominal 0.0169 kW (mildly exothermic), Max Safe 0.05 kW, Hazardous >0.1 kW. Table 1 (p.3): Reactor heat load confirmed 0.0169 kW at base case."
+  },
+  "Conversion reactor.conversion_AceticAcid": {
+    "min": 10.0,
+    "min_warning": 50.0,
+    "max": 99.0,
+    "warn_margin_pct": 10,
+    "_nominal_pct": 95.0,
+    "_hazardous_below_pct": 10.0,
+    "_source": "Table 8 (p.7): Reactor conversion: Min 10%, Nominal 95%, Max Safe 99%, Hazardous <10% (reaction effectively stopped). Table 1 (p.3): Nominal ≈95%, acid-limited reaction. Known open issue: prior test runs showed 0% conversion - verify DWSIM Reactions Manager has a reaction attached with non-zero conversion spec before drawing chemistry conclusions."
+  },
+  "valve_pressure_drop_Pa": {
+    "min": 0,
+    "max_warning": 50000,
+    "max": 100000,
+    "warn_margin_pct": 10,
+    "_nominal_Pa": 0,
+    "_source": "Table 10 (p.8): Valve settings (VALVE-1, VALVE-2, VALVE-3): Kv_max=100, opening=50%, nominal pressure drop=0 Pa. Max Safe 50,000 Pa, Hazardous >100,000 Pa. Outlet pressure: nominal 1.01325, max safe 1.50, hazardous >1.65 bar_abs."
+  },
+  "molar_ratio_B_over_A": {
+    "min": 1.0,
+    "min_warning": 2.0,
+    "max_warning": 8.0,
+    "max": 10.0,
+    "warn_margin_pct": 10,
+    "_nominal": 4.29,
+    "_stoich_mass_ratio": 1.399,
+    "_acid_excess_prohibited": true,
+    "_source": "Table 8 (p.7): Inlet molar ratio B/A: Min 0.5, Nominal 4.29, Max Safe 10, Hazardous <1.0 (acid excess - corrosion + pH drop). Table 12 (p.10): Recommended 2.0-8.0, Hard limit >1.0 (acid excess prohibited). Table 1 (p.3): Stoichiometric B/A mass ratio = 1.399; actual nominal = 4.287 (large NaHCO3 excess). Finding 2 (p.10): B/A >2.0 at 150% acid reason for WARNING (not CRITICAL) reclassification."
+  },
+  "_known_open_issue_zero_reactor_conversion": {
+    "_description": "Prior test runs (SC01, single-scenario) showed 0% conversion for every compound in Conversion reactor'. Check the DWSIM Reactions Manager to confirm a reaction is attached with a non-zero conversion spec before drawing chemistry conclusions from any scenario batch. See also Table 8 (p.7): Hazardous <10% conversion."
+  },
+  "_corrective_findings_summary": {
+    "_finding_1": "Gas tank (V-501) is NOT a pressure hazard max 0.21 bar_abs, sub-atmospheric in all scenarios (Table 7, p.7; Finding 1, p.10).",
+    "_finding_2": "Feed A at 150% (0.9072 kg/h) reclassified WARNING (not CRITICAL) - B/A ratio remains >2.0 (Finding 2, p.10).",
+    "_finding_3": "Feed B at ~80% (2.07 kg/h) confirmed OK - B/A ratio ≈3.4, well above stoichiometric (Finding 3, p.10).",
+    "_finding_4": "Pump pressures >1.65 bar_abs are the most dangerous single-axis deviation - fitting failure → acid spray (Finding 4, p.10).",
+    "_finding_5": "Tank overflow is the primary process hazard at elevated bicarb flows - 1-L tank is a tight constraint (Finding 5, p.10)."
+  }
+}

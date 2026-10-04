@@ -1,0 +1,39 @@
+{
+  "_comment": "Central config for DWSIM-HAZOP pipeline. Edit DWSIM paths and sim_file for your machine before running against DWSIM.",
+  "dwsim_path": "C:/Path/To/DWSIM",
+  "dwsim_exe": "C:/Path/To/DWSIM/DWSIM.exe",
+  "sim_file": "C:/Path/To/Batch_Reactor.dwxmz",
+  "bridge_dir": "pipeline_output",
+  "output_dir": "pipeline_output",
+  "log_dir": "logs",
+  "report_dir": "reports",
+  "thresholds_file": "configs/risk_thresholds.json",
+  "personas_config": "configs/personas_config.json",
+  "dexpi_dir": "data/dexpi",
+  "default_scenarios": "scenarios_config_hazop80.json",
+  "dexpi_prefix": "BatchReactor_DEXPI_Export",
+  "nominal": {
+    "feed_A_kgh": 0.6048,
+    "feed_B_kgh": 2.5925,
+    "pump_bar": 1.01325,
+    "tank_vol_L": 1.0,
+    "temp_K": 298.15
+  },
+  "stage_timeouts_s": {
+    "stage1_dexpi": 120,
+    "stage2_scenarios": 30,
+    "stage3_run": 3600,
+    "stage4_analyze": 120,
+    "stage5_images": 120,
+    "stage6_report": 60,
+    "stage7_debate": 900
+  },
+  "llm": {
+    "_comment": "Credentials come from environment / .env (see .env.example) never store secrets here.",
+    "risk_trigger_levels": ["CRITICAL", "HAZARDOUS", "CATASTROPHIC"],
+    "max_scenarios_per_run": 5,
+    "auto_apply_equipment_changes": false,
+    "dwsim_mutation_enabled": false,
+    "open_modified_flowsheet_in_dwsim": false
+  }
+}
