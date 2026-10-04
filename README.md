@@ -170,9 +170,9 @@ cp .env.example .env
 
 Edit `.env`:
 ```env
-SIEMENS_LLM_API_KEY=your-api-key-here
-SIEMENS_LLM_BASE_URL=https://api.siemens.com/llm/v1
-SIEMENS_LLM_MODEL=qwen-3.6-27b
+LLM_API_KEY=your-api-key-here
+LLM_BASE_URL=...
+LLM_MODEL=...
 ```
 
 ---
