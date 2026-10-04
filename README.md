@@ -139,7 +139,7 @@ DWSIM_Automation/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/dwsim-hazop-bridge.git
+git clone https://github.com/Apratim7104/Agentic-AI-Based-Automation-of-HAZOP-Process.git
 cd dwsim-hazop-bridge
 
 # Create and activate a virtual environment
